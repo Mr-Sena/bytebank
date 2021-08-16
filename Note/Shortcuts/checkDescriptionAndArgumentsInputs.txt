@@ -1,0 +1,4 @@
+Atalho para o IntelliJ: 
+
+Apertando sobre a classe e pressionando Ctrl + Q -> Se obtém uma documentação descritiva da classe
+Clicando dentro dos parenteses (que entram os argumentos) e pressionando Ctrl + P  -> é revelado todos os parâmetros esperados
