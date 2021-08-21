@@ -1,24 +1,11 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(
-      Column(
-        children: <Widget>[
-          Text(
-            'Deliver features faster',
-            textDirection: TextDirection.ltr,
-          ),
-          Text(
-            'Craft beautiful UIs',
-            textDirection: TextDirection.rtl,
-          ),
-          Column(
-            children: <Widget>[
-              Text(
-                'Text dentro de um column que esta tendo de outro column sendo executado no main',
-                textDirection: TextDirection.rtl,
-              )
-            ],
-          )
-        ],
+void main() => runApp(MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('Transferências'),), //Barra do app - Extende uma faixa horizontal na parte superior, Com o nome 'Transferências'
+        floatingActionButton: FloatingActionButton( // Botão flutuante. Icone do botão definida no Child, pela Icon (que recebe o icone definitivamente)
+          onPressed: () {  },
+          child: Icon(Icons.add),
+        ),
       ),
-    );
+    ));
