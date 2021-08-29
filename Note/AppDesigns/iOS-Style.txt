@@ -1,0 +1,2 @@
+O conjunto de componentes Cupertino [https://flutter.dev/docs/development/ui/widgets/cupertino], 
+apresenta Widgets bem característico na plataforma do sistema iOS

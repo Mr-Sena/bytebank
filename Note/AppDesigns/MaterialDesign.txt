@@ -1,0 +1,4 @@
+Material Design [https://material.io/design/guidelines-overview] apresenta um template bem consolidado no mercado 
+que otimiza o tempo de construção de um app. Possuí um biblioteca bem familiar para a maioria dos usuários 
+da plataforma mobile. 
+No flutter à sua estrutura básica é desenvolvida através da biblioteca de Material App (como o próprio Scaffold).
