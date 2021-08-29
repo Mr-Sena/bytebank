@@ -19,6 +19,6 @@ O desenvolvimento com o Flutter carrega muito do Paradigma orientado à Widget, 
 caso, pela próprio método, runApp (que é passado para o método main), onde ele recebe somente um 
 parâmetro, que é um Widget - e quando for colocar mais de um Widget, isto é feito por intermédio 
 de um Widget, do qual os outros irão ser derivados. 
-Então resumidamente, pense nos elementos do Flutter como sendo uma árvore de Widgets bem hierarquica
-, isto pode ser conferido na IDE IntelliJ através da janela de exibição Flutter Outline (localizada 
-no canto esquerdo).
+Então resumidamente, pense nos elementos do Flutter como sendo uma árvore de Widgets bem hierarquica, 
+isto pode ser conferido na IDE IntelliJ através da janela de exibição Flutter Outline (localizada 
+no canto direito).
