@@ -1,0 +1,4 @@
+StatefulWidget -> Permite a modificação do Widget de maneira dinâmica, ou seja, por consequencia de determinado 
+evento, o conteúdo é suscetível à mutações.
+
+Stateless, por sua vez não possuí a capacidade mutável que permite a modificação do elemento em tempo de execução.
