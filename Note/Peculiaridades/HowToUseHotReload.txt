@@ -1,0 +1,3 @@
+Os códigos que serão executados, devem, todos, serem extraído para um Widget, e este, por sua vez deve ser 
+passado para o runApp no método main - que executará a Aplicação.
+Reforçando: os códigos podem ser executados diretamente no runApp, porém não será concedido o recuros Hot Reload
