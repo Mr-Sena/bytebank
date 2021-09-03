@@ -1,0 +1,5 @@
+Case de aplicação: suponha que uma determinada classe tenha um método que retorna um Column. Ela deverá 
+ser selecionada, para fazer a refatoração, pressione Alt + Enter e selecione a opção "Wrap With new Widget".
+Como exemplo, será inserido uma Scaffold, então assim que a palavra "Column" ser substituida pela palavra 
+widget, sobreescreva esta com a Classe que implementa o Layout desejado (neste caso Scaffold, com o seu suporte 
+para o Material Design).
