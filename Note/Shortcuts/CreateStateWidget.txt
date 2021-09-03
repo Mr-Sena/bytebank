@@ -1,0 +1,5 @@
+Digite as seguintes abrevações no IntelliJ
+
+stful -> Criar classe que represente um Widget Stateful
+
+stless -> Criar uma classe que represente um Widget Stateless
