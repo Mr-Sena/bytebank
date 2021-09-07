@@ -1,0 +1,22 @@
+Descrição: Definir ao TextField (Widget que recebe input de texto) somente o teclado númerico
+
+Procedimento: 
+	adcionar a propriedade TextInputType.number ao keyboardType, da seguinte maneira:
+	keyboardType: TextInputType.number,
+
+	Exemplo completo da implementação:
+
+        TextField(
+  
+          style: TextStyle(
+              fontSize: 24.00
+          ),
+
+          decoration: InputDecoration(
+            labelText: 'Legenda do campo ',
+            hintText: 'Dica',
+          ),
+
+          keyboardType: TextInputType.number,
+
+        ),
