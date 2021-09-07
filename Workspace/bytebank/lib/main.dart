@@ -21,7 +21,54 @@ class FormularioTransferencias extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Efetuando Transferências'),),
+      appBar: AppBar(title: Text('Efetivação de Transferência'),),
+      body: Column(
+        children: <Widget>[
+
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+
+              style: TextStyle(
+                fontSize: 24.00
+              ),
+
+              decoration: InputDecoration(
+                labelText: 'Número da conta: ',
+                hintText: '0000',
+              ),
+
+              keyboardType: TextInputType.number,
+
+            ),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+
+              style: TextStyle(
+                  fontSize: 24.00
+              ),
+
+              decoration: InputDecoration(
+                icon: Icon(Icons.monetization_on),
+                labelText: 'Valor: ',
+                hintText: '00.00',
+              ),
+
+              keyboardType: TextInputType.number,
+
+            ),
+          ),
+
+          ElevatedButton(
+              onPressed: () {},
+              child: Text('Confirmar'),
+          )
+
+        ],
+      )
     );
   }
 }
