@@ -5,3 +5,34 @@ Procedimento:
 	Supondo que o Widget em questão é um TextField (elemento que faz input de texto).
 	Posicione o cursor do mouse extamente em cima do nome da classe que chama o Widget.
 	Pressione: Alt + Enter e selecione a opção 'Wrap with Padding'
+
+
+Propriedades: 
+	A distância da marge é preenchida no EdgeInsets.
+	EdgeInsets, por sua vez tem algumas características distintas.
+	EdgeInsets.all(valorMargem) -> Mesmo valor para todas as arestas em volta do Widget
+	EdgeInsets.fromLTRB(L, T, R, B) -> Uma médida para cada canto, sendo eles Left, Top, Right, Bottom.
+	EdgeInsets.symmetric(y, x) -> Onde y se refere ao eixo vertical e x o horizontal
+
+
+
+Exemplo de implementação completa: 
+
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+
+              style: TextStyle(
+                  fontSize: 24.00
+              ),
+
+              decoration: InputDecoration(
+                icon: Icon(Icons.monetization_on),
+                labelText: 'Valor: ',
+                hintText: '00.00',
+              ),
+
+              keyboardType: TextInputType.number,
+
+            ),
+          ),
