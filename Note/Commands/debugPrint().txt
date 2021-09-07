@@ -1,0 +1,3 @@
+Descrição: print no console apropriado para aplicações Flutter.
+
+debugPrint('Não usar o print básico do Dart.');
