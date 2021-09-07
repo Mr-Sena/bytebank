@@ -1,0 +1,7 @@
+Descrição: 
+	O recurso permite a criação de distanciamento de determinado Widget através de um recuo.
+
+Procedimento: 
+	Supondo que o Widget em questão é um TextField (elemento que faz input de texto).
+	Posicione o cursor do mouse extamente em cima do nome da classe que chama o Widget.
+	Pressione: Alt + Enter e selecione a opção 'Wrap with Padding'
