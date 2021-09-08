@@ -1,0 +1,119 @@
+Descrição: 
+	O controller é uma propriedade presente no TextField, e permite a coleta de informações que estão
+	inseridas no respectivo campo. Além Disso nesse exemplo será utilizado um atributo privado 
+	(do tipo TextEditingController) que será responsável em armazenar o input destas informações.
+
+Procedimento:
+	Pode inseir o atributo no escopo mais amplo do Widget - logo após a criação da classe. Dessa forma:
+
+		final TextEditingController _controladorCampoValor = TextEditingController();
+
+	e propriedade controller do TextField, deve indicar para este atributo. Exemplo: 
+
+		controller: _controladorCampoNumeroConta
+	
+	Por fim: atribua à uma referência presente no evento do Click no Button, Exemplo: 
+
+
+          ElevatedButton(
+              onPressed: () {
+                debugPrint('Botão "confirmar" clicado. ');
+
+                final int? numeroConta = int.tryParse(_controladorCampoNumeroConta.text);
+                final double? valor = double.tryParse(_controladorCampoValor.text);
+
+                if(numeroConta != null && valor != null) {
+                  final transferenciaCriada = Transferencia(valor, numeroConta);
+                  debugPrint('$transferenciaCriada');
+                }
+
+              },
+              child: Text('Confirmar'),
+
+
+
+
+
+
+
+
+Exemplo completo: 
+
+
+class FormularioTransferencias extends StatelessWidget {
+  FormularioTransferencias({Key? key}) : super(key: key);
+
+
+  final TextEditingController _controladorCampoNumeroConta = TextEditingController();
+  final TextEditingController _controladorCampoValor = TextEditingController();
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Efetivação de Transferência'),),
+      body: Column(
+        children: <Widget>[
+
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+
+              controller: _controladorCampoNumeroConta,
+
+              style: TextStyle(
+                fontSize: 24.00
+              ),
+
+              decoration: InputDecoration(
+                labelText: 'Número da conta: ',
+                hintText: '0000',
+              ),
+
+              keyboardType: TextInputType.number,
+
+            ),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+
+              controller: _controladorCampoValor,
+
+              style: TextStyle(
+                  fontSize: 24.00
+              ),
+
+              decoration: InputDecoration(
+                icon: Icon(Icons.monetization_on),
+                labelText: 'Valor: ',
+                hintText: '00.00',
+              ),
+
+              keyboardType: TextInputType.number,
+
+            ),
+          ),
+
+          ElevatedButton(
+              onPressed: () {
+                debugPrint('Botão "confirmar" clicado. ');
+
+                final int? numeroConta = int.tryParse(_controladorCampoNumeroConta.text);
+                final double? valor = double.tryParse(_controladorCampoValor.text);
+
+                if(numeroConta != null && valor != null) {
+                  final transferenciaCriada = Transferencia(valor, numeroConta);
+                  debugPrint('$transferenciaCriada');
+                }
+
+              },
+              child: Text('Confirmar'),
+          )
+
+        ],
+      )
+    );
+  }
+}
