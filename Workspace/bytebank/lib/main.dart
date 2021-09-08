@@ -16,7 +16,12 @@ class BytebankApp extends StatelessWidget {
 
 
 class FormularioTransferencias extends StatelessWidget {
-  const FormularioTransferencias({Key? key}) : super(key: key);
+  FormularioTransferencias({Key? key}) : super(key: key);
+
+
+  final TextEditingController _controladorCampoNumeroConta = TextEditingController();
+  final TextEditingController _controladorCampoValor = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +33,8 @@ class FormularioTransferencias extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
+
+              controller: _controladorCampoNumeroConta,
 
               style: TextStyle(
                 fontSize: 24.00
@@ -47,6 +54,8 @@ class FormularioTransferencias extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: TextField(
 
+              controller: _controladorCampoValor,
+
               style: TextStyle(
                   fontSize: 24.00
               ),
@@ -63,7 +72,21 @@ class FormularioTransferencias extends StatelessWidget {
           ),
 
           ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                debugPrint('Botão "confirmar" clicado. ');
+
+                final int? numeroConta = int.tryParse(_controladorCampoNumeroConta.text);
+                final double? valor = double.tryParse(_controladorCampoValor.text);
+
+                //Importante: Nesse caso se a tentativa de Parse (Conversão de String para o tipo númerico) falhar, o retorno será nulo
+                //E, portanto, a condição a seguir se torna inteiramente efetiva na validação de sua responsabilidade.
+
+                if(numeroConta != null && valor != null) {
+                  final transferenciaCriada = Transferencia(valor, numeroConta);
+                  debugPrint('$transferenciaCriada');
+                }
+
+              },
               child: Text('Confirmar'),
           )
 
@@ -130,5 +153,8 @@ class Transferencia {
 
   Transferencia(this.valor, this.numeroConta);
 
-
+  @override
+  String toString() {
+    return 'Transferencia  {valor: $valor, numeroConta: $numeroConta}';
+  }
 }
