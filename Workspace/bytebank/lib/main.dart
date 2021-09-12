@@ -30,62 +30,21 @@ class FormularioTransferencias extends StatelessWidget {
       body: Column(
         children: <Widget>[
 
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-
-              controller: _controladorCampoNumeroConta,
-
-              style: TextStyle(
-                fontSize: 24.00
-              ),
-
-              decoration: InputDecoration(
-                labelText: 'Número da conta: ',
-                hintText: '0000',
-              ),
-
-              keyboardType: TextInputType.number,
-
-            ),
+          Editor(
+              controlador: _controladorCampoNumeroConta,
+              dica: '0000',
+              rotulo: 'Número da Conta: '),
+          Editor(
+            dica: '0.00',
+            controlador: _controladorCampoValor,
+            rotulo: 'Valor: ',
+            icone: Icons.monetization_on,
           ),
 
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-
-              controller: _controladorCampoValor,
-
-              style: TextStyle(
-                  fontSize: 24.00
-              ),
-
-              decoration: InputDecoration(
-                icon: Icon(Icons.monetization_on),
-                labelText: 'Valor: ',
-                hintText: '00.00',
-              ),
-
-              keyboardType: TextInputType.number,
-
-            ),
-          ),
 
           ElevatedButton(
               onPressed: () {
-                debugPrint('Botão "confirmar" clicado. ');
-
-                final int? numeroConta = int.tryParse(_controladorCampoNumeroConta.text);
-                final double? valor = double.tryParse(_controladorCampoValor.text);
-
-                //Importante: Nesse caso se a tentativa de Parse (Conversão de String para o tipo númerico) falhar, o retorno será nulo
-                //E, portanto, a condição a seguir se torna inteiramente efetiva na validação de sua responsabilidade.
-
-                if(numeroConta != null && valor != null) {
-                  final transferenciaCriada = Transferencia(valor, numeroConta);
-                  debugPrint('$transferenciaCriada');
-                }
-
+                _criaTransferencia();
               },
               child: Text('Confirmar'),
           )
@@ -94,7 +53,60 @@ class FormularioTransferencias extends StatelessWidget {
       )
     );
   }
+
+  void _criaTransferencia() {
+    debugPrint('Botão "confirmar" clicado. ');
+
+    final int? numeroConta = int.tryParse(_controladorCampoNumeroConta.text);
+    final double? valor = double.tryParse(_controladorCampoValor.text);
+
+    //Importante: Nesse caso se a tentativa de Parse (Conversão de String para o tipo númerico) falhar, o retorno será nulo
+    //E, portanto, a condição a seguir se torna inteiramente efetiva na validação de sua responsabilidade.
+
+    if(numeroConta != null && valor != null) {
+      final transferenciaCriada = Transferencia(valor, numeroConta);
+      debugPrint('$transferenciaCriada');
+    }
+
+  }
+
 }
+
+class Editor extends StatelessWidget {
+
+  final TextEditingController? controlador;
+  final String? rotulo;
+  final String? dica;
+  final IconData? icone;
+
+
+  Editor({this.controlador, this.rotulo, this.dica, this.icone});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: TextField(
+
+        controller: controlador,
+
+        style: TextStyle(
+            fontSize: 24.00
+        ),
+
+        decoration: InputDecoration(
+          icon: icone != null ? Icon(icone): null ,
+          labelText: rotulo,
+          hintText: dica,
+        ),
+
+        keyboardType: TextInputType.number,
+
+      ),
+    );
+  }
+}
+
 
 
 class ListaTransferencias extends StatelessWidget {
