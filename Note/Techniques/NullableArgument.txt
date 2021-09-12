@@ -1,0 +1,3 @@
+Para que um atributo seja passível de receber nulo - o Ponto de Interogação deve estar após o tipo da variável.
+Exemplo:
+	String? icone
