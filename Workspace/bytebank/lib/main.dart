@@ -7,7 +7,7 @@ class BytebankApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: FormularioTransferencias(),
+        body: ListaTransferencias(),
       ),
     );
   }
@@ -43,9 +43,7 @@ class FormularioTransferencias extends StatelessWidget {
 
 
           ElevatedButton(
-              onPressed: () {
-                _criaTransferencia();
-              },
+              onPressed: () => _criaTransferencia(context),
               child: Text('Confirmar'),
           )
 
@@ -54,7 +52,7 @@ class FormularioTransferencias extends StatelessWidget {
     );
   }
 
-  void _criaTransferencia() {
+  void _criaTransferencia(BuildContext context) {
     debugPrint('Botão "confirmar" clicado. ');
 
     final int? numeroConta = int.tryParse(_controladorCampoNumeroConta.text);
@@ -66,6 +64,10 @@ class FormularioTransferencias extends StatelessWidget {
     if(numeroConta != null && valor != null) {
       final transferenciaCriada = Transferencia(valor, numeroConta);
       debugPrint('$transferenciaCriada');
+      Navigator.pop(context, transferenciaCriada);
+      debugPrint('Criando tranferência...');
+      /// Obs importante sobre o Navigator: push sobrepõe um Widget/tela sobre o outro e .pop retira esse Widget/tela e volta pra página anterior.
+      /// Nesse caso, além disso, ele também devolve o atributo transferência criada, fazendo o trafego de algums informações.
     }
 
   }
@@ -127,7 +129,25 @@ class ListaTransferencias extends StatelessWidget {
       ),
 
       floatingActionButton: FloatingActionButton( // Botão flutuante. Icone do botão definida no Child, pela Icon (que recebe o icone definitivamente)
-        onPressed: () {  },
+        onPressed: () {
+
+          ///Função do botão: fazer a navegação entre os Widgets - as telas.
+          ///Implementação: Fazer o gerenciamento dos respectivos Widgets, utilizar o recurso do Material App para fazer o direcionamento entre pags.
+
+
+          final Future future = Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return FormularioTransferencias();
+          }
+          ));
+
+
+          future.then((transferenciaRecebida) => {
+            debugPrint('chegou no then do future'),
+            debugPrint('$transferenciaRecebida')
+
+          });
+
+        },
         child: Icon(Icons.add),
       ),
 
