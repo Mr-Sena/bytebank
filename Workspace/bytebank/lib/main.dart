@@ -112,27 +112,25 @@ class Editor extends StatelessWidget {
 
 
 class ListaTransferencias extends StatelessWidget {
+
+
+  //TODO ver o schema dessa nova lista:
+  //final List<Transferencia> _transferencia = List<Transferencia>.filled(0,new Transferencia(0, 0), growable:true);
+  final List<Transferencia> _transferencias = List<Transferencia>.empty(growable:true);
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Transferências'),), //Barra do app - Extende uma faixa horizontal na parte superior, Com o nome 'Transferências'
-      body: ListView(
-        children: <Widget>[
+      body: ListView.builder(
 
-          ItemTransferencia(Transferencia(37.00, 5537)),
-          ItemTransferencia(Transferencia(57.00, 7542)),
-          ItemTransferencia(Transferencia(57.00, 7542)),
-          ItemTransferencia(Transferencia(57.00, 7542)),
-          ItemTransferencia(Transferencia(57.00, 7542)),
-          ItemTransferencia(Transferencia(57.00, 7542)),
-          ItemTransferencia(Transferencia(57.00, 7542)),
-          ItemTransferencia(Transferencia(57.00, 7542)),
-          ItemTransferencia(Transferencia(57.00, 7542)),
-          ItemTransferencia(Transferencia(34.00, 7321)),
+        itemCount: _transferencias.length,
+        itemBuilder: (context, indice) {
+          final transferencia = _transferencias[indice];
+          return ItemTransferencia(transferencia);
+        },
 
-
-
-        ],
       ),
 
       floatingActionButton: FloatingActionButton( // Botão flutuante. Icone do botão definida no Child, pela Icon (que recebe o icone definitivamente)
