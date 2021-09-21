@@ -1,0 +1,9 @@
+Sua utilização substitui o column quando o número de linhas/itens ultrapassa a capacidade de exibição na tela. 
+O que por conseguinte acaba trunchando a visualização somente com os elementos que estiverem presente na primeira 
+parte da amostra. 
+
+O seguinte Widget promove uma scollagem de página, e promove a navegabilidade entre todas as linhas/itens da tela. 
+
+
+Sua implementação é a mesma do Column, portanto, para refatora o seu código para suportar determinada quantidade de 
+itens/linhas, basta substituir o Column por ListView

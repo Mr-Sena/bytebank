@@ -67,7 +67,7 @@ class FormularioTransferencias extends StatelessWidget {
       Navigator.pop(context, transferenciaCriada);
       debugPrint('Criando tranferência...');
       /// Obs importante sobre o Navigator: push sobrepõe um Widget/tela sobre o outro e .pop retira esse Widget/tela e volta pra página anterior.
-      /// Nesse caso, além disso, ele também devolve o atributo transferência criada, fazendo o trafego de algums informações.
+      /// Nesse caso, além disso, ele também devolve o atributo transferenciaCriada, fazendo o trafego de algums informações.
     }
 
   }
@@ -116,10 +116,17 @@ class ListaTransferencias extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Transferências'),), //Barra do app - Extende uma faixa horizontal na parte superior, Com o nome 'Transferências'
-      body: Column(
+      body: ListView(
         children: <Widget>[
 
           ItemTransferencia(Transferencia(37.00, 5537)),
+          ItemTransferencia(Transferencia(57.00, 7542)),
+          ItemTransferencia(Transferencia(57.00, 7542)),
+          ItemTransferencia(Transferencia(57.00, 7542)),
+          ItemTransferencia(Transferencia(57.00, 7542)),
+          ItemTransferencia(Transferencia(57.00, 7542)),
+          ItemTransferencia(Transferencia(57.00, 7542)),
+          ItemTransferencia(Transferencia(57.00, 7542)),
           ItemTransferencia(Transferencia(57.00, 7542)),
           ItemTransferencia(Transferencia(34.00, 7321)),
 
@@ -135,7 +142,7 @@ class ListaTransferencias extends StatelessWidget {
           ///Implementação: Fazer o gerenciamento dos respectivos Widgets, utilizar o recurso do Material App para fazer o direcionamento entre pags.
 
 
-          final Future future = Navigator.push(context, MaterialPageRoute(builder: (context) {
+          final Future<Transferencia?> future = Navigator.push(context, MaterialPageRoute(builder: (context) {
             return FormularioTransferencias();
           }
           ));
