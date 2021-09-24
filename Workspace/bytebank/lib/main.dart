@@ -59,7 +59,7 @@ class FormularioTransferencias extends StatelessWidget {
     final double? valor = double.tryParse(_controladorCampoValor.text);
 
     //Importante: Nesse caso se a tentativa de Parse (Conversão de String para o tipo númerico) falhar, o retorno será nulo
-    //E, portanto, a condição a seguir se torna inteiramente efetiva na validação de sua responsabilidade.
+    //E, portanto, a condição a seguir se torna é atendida validando conforme o esperado.
 
     if(numeroConta != null && valor != null) {
       final transferenciaCriada = Transferencia(valor, numeroConta);
@@ -111,13 +111,22 @@ class Editor extends StatelessWidget {
 
 
 
-class ListaTransferencias extends StatelessWidget {
+class ListaTransferencias extends StatefulWidget {
 
 
-  //TODO ver o schema dessa nova lista:
-  //final List<Transferencia> _transferencia = List<Transferencia>.filled(0,new Transferencia(0, 0), growable:true);
   final List<Transferencia> _transferencias = List<Transferencia>.empty(growable:true);
 
+
+
+
+  @override
+  State<StatefulWidget> createState() {
+    return ListaTransferenciasState();
+  }
+}
+
+
+class ListaTransferenciasState extends State<ListaTransferencias> {
 
   @override
   Widget build(BuildContext context) {
@@ -125,9 +134,9 @@ class ListaTransferencias extends StatelessWidget {
       appBar: AppBar(title: Text('Transferências'),), //Barra do app - Extende uma faixa horizontal na parte superior, Com o nome 'Transferências'
       body: ListView.builder(
 
-        itemCount: _transferencias.length,
+        itemCount: widget._transferencias.length,
         itemBuilder: (context, indice) {
-          final transferencia = _transferencias[indice];
+          final transferencia = widget._transferencias[indice];
           return ItemTransferencia(transferencia);
         },
 
@@ -136,8 +145,10 @@ class ListaTransferencias extends StatelessWidget {
       floatingActionButton: FloatingActionButton( // Botão flutuante. Icone do botão definida no Child, pela Icon (que recebe o icone definitivamente)
         onPressed: () {
 
+
           ///Função do botão: fazer a navegação entre os Widgets - as telas.
-          ///Implementação: Fazer o gerenciamento dos respectivos Widgets, utilizar o recurso do Material App para fazer o direcionamento entre pags.
+          ///Implementação: Gerencimanto dos respectivos Widgets,
+          ///utilização do recurso do Material App para fazer o direcionamento entre pags.
 
 
           final Future<Transferencia?> future = Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -148,9 +159,12 @@ class ListaTransferencias extends StatelessWidget {
 
           future.then((transferenciaRecebida) => {
             debugPrint('chegou no then do future'),
-            debugPrint('$transferenciaRecebida')
+            debugPrint('$transferenciaRecebida'),
 
+
+            setState(() => widget._transferencias.add(transferenciaRecebida!))
           });
+
 
         },
         child: Icon(Icons.add),
@@ -158,8 +172,11 @@ class ListaTransferencias extends StatelessWidget {
 
     );
   }
-
 }
+
+
+
+
 
 class ItemTransferencia extends StatelessWidget {
 
