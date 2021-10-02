@@ -1,0 +1,11 @@
+Descrição: Inserção da coluna (wrap) com um widget que promove o recurso de rolagem da tela.
+
+How to do [On IntelliJ]: 
+
+Seleciona o Column, pressione Alt + Enter
+Escola a opção "Wrap with widget..."
+então substitua a palavra em seleção "widget"
+pelo no da classe, que é o Widget em questão: 
+SingleChildScrollView
+
+FINISH.

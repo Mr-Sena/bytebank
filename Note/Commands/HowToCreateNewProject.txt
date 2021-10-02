@@ -1,2 +1,2 @@
 Dentro do diretório de seu workspace, digite o comando: 
-flutter create <no_do_app>
+flutter create <name_do_app>

@@ -27,27 +27,29 @@ class FormularioTransferencias extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Efetivação de Transferência'),),
-      body: Column(
-        children: <Widget>[
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
 
-          Editor(
-              controlador: _controladorCampoNumeroConta,
-              dica: '0000',
-              rotulo: 'Número da Conta: '),
-          Editor(
-            dica: '0.00',
-            controlador: _controladorCampoValor,
-            rotulo: 'Valor: ',
-            icone: Icons.monetization_on,
-          ),
+            Editor(
+                controlador: _controladorCampoNumeroConta,
+                dica: '0000',
+                rotulo: 'Número da Conta: '),
+            Editor(
+              dica: '0.00',
+              controlador: _controladorCampoValor,
+              rotulo: 'Valor: ',
+              icone: Icons.monetization_on,
+            ),
 
 
-          ElevatedButton(
-              onPressed: () => _criaTransferencia(context),
-              child: Text('Confirmar'),
-          )
+            ElevatedButton(
+                onPressed: () => _criaTransferencia(context),
+                child: Text('Confirmar'),
+            )
 
-        ],
+          ],
+        ),
       )
     );
   }
@@ -59,7 +61,7 @@ class FormularioTransferencias extends StatelessWidget {
     final double? valor = double.tryParse(_controladorCampoValor.text);
 
     //Importante: Nesse caso se a tentativa de Parse (Conversão de String para o tipo númerico) falhar, o retorno será nulo
-    //E, portanto, a condição a seguir se torna é atendida validando conforme o esperado.
+    //E, portanto, a condição a seguir valida a possibilidade desse cenários.
 
     if(numeroConta != null && valor != null) {
       final transferenciaCriada = Transferencia(valor, numeroConta);
@@ -115,6 +117,7 @@ class ListaTransferencias extends StatefulWidget {
 
 
   final List<Transferencia> _transferencias = List<Transferencia>.empty(growable:true);
+  //final List<Transferencia> _transferencias = []; <- Acreduti que dessa forma funciona semelhantemente à definição acima.
 
 
 
