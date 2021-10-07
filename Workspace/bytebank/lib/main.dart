@@ -6,9 +6,18 @@ class BytebankApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        body: ListaTransferencias(),
+      theme: ThemeData(
+        primaryColor: Colors.blue[600],
+        accentColor: Colors.greenAccent[700],
+        elevatedButtonTheme: ElevatedButtonThemeData(
+
+            style: TextButton.styleFrom(
+              backgroundColor: Colors.green[700]
+          )
+
+        ),
       ),
+      home: ListaTransferencias(),
     );
   }
 }
@@ -212,6 +221,6 @@ class Transferencia {
 
   @override
   String toString() {
-    return 'Transferencia  {valor: $valor, numeroConta: $numeroConta}';
+    return 'Transferencia - {valor: $valor, numeroConta: $numeroConta}';
   }
 }

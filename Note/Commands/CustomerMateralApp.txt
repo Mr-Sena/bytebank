@@ -1,0 +1,50 @@
+Descrição: personalização de cores que fazem parte do estilo da tela.
+
+Dentro do MaterialApp tem um atributo chamado theme.
+Ele é o responsável pela customização de cores no app.
+
+Exemplo pré-definido: 
+theme: ThemeData.dark(),
+
+Prenchendo as propriedades diretamente: 
+
+theme: ThemeData(
+	primaryColor: Colors.green[900]
+),
+
+
+Obs o parâmetro é um espectro especifico na gama de cores do verde.
+Para consultar o catálogo consulte o site abaixo
+
+Site Material design
+[ https://material.io/resources/color/#!/?view.left=0&view.right=1&secondary.color=FF1744&primary.color=1976D2 
+
+
+Definindo cores de detalhamento do app (através do atributo accent): 
+
+theme: ThemeData(
+        primaryColor: Colors.blue[600],
+        accentColor: Colors.greenAccent[700]
+
+
+
+
+
+
+Alterando o estilo do botão 
+(nese caso somente a cor, entretanto, há outras prorpiedades disponíveis para customização): 
+
+theme: ThemeData(
+        primaryColor: Colors.blue[600],
+        accentColor: Colors.greenAccent[700],
+
+        elevatedButtonTheme: ElevatedButtonThemeData(
+
+            style: TextButton.styleFrom(
+              backgroundColor: Colors.green[700]
+          )
+
+        ),
+      ),
+
+
